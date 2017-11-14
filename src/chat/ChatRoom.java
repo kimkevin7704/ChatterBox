@@ -6,23 +6,27 @@ import java.awt.event.*;
 public class ChatRoom implements ActionListener{
 	private static String SEND_BUTTON_TEXT = "send";
 	
-	JLabel userIDText;
+	JLabel userIDText, activeUsers;
 	JTextArea chatRoomText;
 	JTextField chatText;
 	JButton send;
 	User currentUser;
+	Users userList;
 	ChatLog thisChatLog;
 	ChatRooms chatrooms;
 	
-	ChatRoom (User user, ChatLog chatlog, ChatRooms theChatrooms) 
+	ChatRoom (User user, ChatLog chatlog, ChatRooms theChatrooms, Users theUserList) 
 	{
 		JFrame chatFrame = new JFrame();
 		currentUser = user;
 		thisChatLog = chatlog;
 		chatrooms = theChatrooms;
+		userList = theUserList;
 		
 		userIDText = new JLabel("logged in as " + user.getUserName());
 		userIDText.setBounds(10, 10, 300, 30);
+		activeUsers = new JLabel("Active Users:\n" + theUserList.getUserList());
+		activeUsers.setBounds(350, 10, 100, 200);
 		chatRoomText = new JTextArea();
 		chatRoomText.setText(chatlog.getChatLogString());
 		chatRoomText.setBounds(10, 50, 400, 300);
@@ -35,6 +39,7 @@ public class ChatRoom implements ActionListener{
 		
 		chatFrame.setSize(500, 500);
 		chatFrame.add(userIDText);
+		chatFrame.add(activeUsers);
 		chatFrame.add(chatRoomText);
 		chatFrame.add(chatText);
 		chatFrame.add(send);

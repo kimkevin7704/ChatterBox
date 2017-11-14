@@ -8,6 +8,7 @@ public class StartChat implements ActionListener{
 	private static String USER_PROMPT = "Please enter your user name";
 	private static String SUBMIT_BUTTON_TEXT = "Enter Chatroom";
 	private static String UPDATED_PROMPT = "Add new users";
+	//switch to update login window
 	private boolean isUpdate;
 	
 	JFrame frame;
@@ -73,7 +74,7 @@ public class StartChat implements ActionListener{
 		//refresh text box
 		userInput.setText("");
 		//make a new chatroom for user
-		chatroom = new ChatRoom(user, chatlog, chatRooms);
+		chatroom = new ChatRoom(user, chatlog, chatRooms, userList);
 		//add chatroom to chatroom array
 		chatRooms.addChatRoom(chatroom);
 	}

@@ -16,6 +16,7 @@ public class ChatLog {
 		return chatHistory;
 	}
 	
+	//returns string from messages in chatlog
 	public String getChatLogString()
 	{
 		String chatLogString = new String("");
@@ -27,6 +28,7 @@ public class ChatLog {
 		else
 			messageLimit = 0;
 		
+		//make string of last 20 messages to print
 		for(int i = messageLimit; i < chatHistory.size(); i++)
 		{
 			chatLogString = chatLogString + chatHistory.get(i).getDetailMessage() + "\n";
